@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+#Route::resource('fundraisers','FundraiserController');
+
+Route::prefix('api')->group(function() {
+  Route::resource('fundraisers','FundraiserController');
+});
