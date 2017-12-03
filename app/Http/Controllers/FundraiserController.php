@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Fundraiser;
 use Illuminate\Http\Request;
+use App\Fundraiser;
 
 class FundraiserController extends Controller
 {
+
+    public function __construct()
+    {
+      //$this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,10 @@ class FundraiserController extends Controller
      */
     public function index()
     {
-        //
+        $fundraisers = Fundraiser::get();
+        return response()->json([
+          'fundraisers' => $fundraisers,
+        ], 200);
     }
 
     /**
@@ -35,7 +44,20 @@ class FundraiserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'name' => 'required|max:250'
+        ]);
+
+        $fundraiser = Fundraiser::create([
+          'name' => request('name'),
+          //'user_id' => Auth::user()->id
+          'user_id' => 1
+        ]);
+
+        return response()->json([
+          'fundraiser' => $fundraiser,
+          'message' => 'Success'
+        ], 200);
     }
 
     /**
