@@ -14,7 +14,7 @@
 Route::prefix('api')->group(function() {
   Route::get('fundraisers/user-reviews/{user}', 'FundraiserController@withUserReviews');
   Route::resource('fundraisers','FundraiserController');
-  //Route::resource('reviews', 'ReviewController');
+  Route::resource('reviews', 'ReviewController');
 });
 
 Auth::routes();
