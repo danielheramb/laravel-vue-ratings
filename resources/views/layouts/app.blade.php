@@ -28,9 +28,13 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    @guest
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                    @else
+                        <a class="navbar-brand" href="{{ url('/app') }}">
+                    @endguest
+                            {{ config('app.name', 'Laravel') }}
+                        </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

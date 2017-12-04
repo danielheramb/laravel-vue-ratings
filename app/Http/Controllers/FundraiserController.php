@@ -21,8 +21,6 @@ class FundraiserController extends Controller
      */
     public function index()
     {
-        //$fundraisers = Fundraiser::get();
-
       $fundraisers = Fundraiser::select('fundraisers.id', 'fundraisers.name',
         DB::raw('round(avg(reviews.rating),2) as rating'), DB::raw('count(reviews.rating) as rating_count'))
           ->join('reviews', 'reviews.fundraiser_id', '=', 'fundraisers.id')
@@ -117,23 +115,12 @@ class FundraiserController extends Controller
 
     public function withUserReviews($id)
     {
-      $fundraisers = DB::select('select `fundraisers`.`id`, `fundraisers`.`name`, round(avg(reviews.rating),2) as rating, `reviews`.`rating` as user_rating, `reviews`.`review` as user_review
+      $fundraisers = DB::select('select `fundraisers`.`id`, `fundraisers`.`name`, round(avg(r1.rating),2) as rating, count(r1.rating) as rating_count, `r2`.`rating` as user_rating, `r2`.`review` as user_review 
 from `fundraisers` 
-left outer join `reviews` on `reviews`.`fundraiser_id` = `fundraisers`.`id` 
-left outer join `reviews` as `reviews2` on `reviews2`.`user_id` = ?
+left outer join `reviews` as `r1` on `r1`.`fundraiser_id` = `fundraisers`.`id` 
+left outer join `reviews` as `r2` on `r2`.`fundraiser_id` = `fundraisers`.`id` and `r2`.`user_id` = ? 
 group by `fundraisers`.`id`, `fundraisers`.`name` 
 order by `rating` desc, `fundraisers`.`id` asc', [$id]);
-      /*
-      $fundraisers = Fundraiser::select('fundraisers.id', 'fundraisers.name', DB::raw('round(avg(reviews.rating),2) as rating'), 'reviews.rating', 'reviews.review')
-        ->join('reviews', 'reviews.fundraiser_id', '=', 'fundraisers.id')
-        ->join('users', 'users.id', '=', 'reviews.user_id')
-        ->where('users.id', '=', $id)
-        ->groupBy('fundraisers.id')
-        ->groupBy('fundraisers.name')
-        ->orderBy('rating', 'desc')
-        ->orderBy('fundraisers.id', 'asc')
-        ->get();
-      */
       return response()->json([
         'fundraisers' => $fundraisers,
       ], 200);

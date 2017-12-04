@@ -26,4 +26,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function logged_in()
+    {
+        return view('logged_in');
+    }
+
+
 }

@@ -19,7 +19,7 @@ Route::prefix('api')->group(function() {
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::redirect('/home', '/');
+Route::get('/app', 'HomeController@logged_in')->name('logged_in')->middleware('auth');
 
 
 Route::get('/test/1', function() {

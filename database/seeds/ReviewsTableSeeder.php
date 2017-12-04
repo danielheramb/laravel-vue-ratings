@@ -17,6 +17,7 @@ class ReviewsTableSeeder extends Seeder
       $fundraisers = DB::table('fundraisers')->pluck('id');
       $reviewers = DB::table('users')->pluck('id')->all();
       $current_timestamp = Carbon::now()->format('Y-m-d H:i:s');
+      $fun_run_id = DB::table('fundraisers')->where('name','=','Boosterthon Fun Run')->value('id');
 
       foreach ($fundraisers as $id) {
         $reviewers_for_fundraiser = [];
@@ -28,6 +29,10 @@ class ReviewsTableSeeder extends Seeder
           $review['fundraiser_id'] = $id;
           $review['created_at'] = $current_timestamp;
           $review['updated_at'] = $current_timestamp;
+
+          // A little brown-nosing to make the Fun Run 5 stars!
+          if ($id == $fun_run_id) $review['rating'] = 5;
+
           $records[] = $review;
         }
       }

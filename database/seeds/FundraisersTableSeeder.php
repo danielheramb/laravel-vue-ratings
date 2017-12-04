@@ -32,9 +32,9 @@ class FundraisersTableSeeder extends Seeder
           ["name" => "Field Day","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Giving Kiosks","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Crowdfunding","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
-          ["name" => "Ebates","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Popcorn Sales","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Comedy Night","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
+          /*
           ["name" => "Post It Note Challenge","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Peer-to-Peer Fundraising","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Community Grants","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
@@ -84,6 +84,7 @@ class FundraisersTableSeeder extends Seeder
           ["name" => "Read-a-thon","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Parents' Party","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
           ["name" => "Straw Draw","created_at" => $current_timestamp,"updated_at" => $current_timestamp,"user_id" => $admin_user_id],
+          */
         ]);
     }
 }
