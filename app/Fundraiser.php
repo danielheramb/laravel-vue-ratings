@@ -26,4 +26,14 @@ class Fundraiser extends Model
     'user_id',
   ];
 
+  public function reviews()
+  {
+    return $this->hasMany('App\Review');
+  }
+
+  public function rating()
+  {
+    return $this->reviews()->avg('rating');
+  }
+
 }

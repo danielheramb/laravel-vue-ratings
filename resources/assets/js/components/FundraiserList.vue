@@ -14,7 +14,7 @@
                         <ul class="list-group">
                             <li v-if="fundraisers.length === 0">There are no fundraisers yet!</li>
                             <li class="list-group-item" v-for="(fundraiser, index) in fundraisers">
-                                {{ fundraiser.name }}
+                                {{ fundraiser.name }} <span id="rating">( {{ fundraiser.rating }} stars )</span>
                             </li>
                         </ul>
                     </div>
@@ -63,9 +63,11 @@
           fundraiser: {
             id: '',
             name: '',
+            rating: '',
           },
           errors: [],
-          fundraisers: []
+          fundraisers: [],
+          reviews: []
         }
       },
       mounted() {

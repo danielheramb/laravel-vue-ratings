@@ -17,6 +17,10 @@ class UsersTableSeeder extends Seeder
       $admin_password = config('booster.admin_password');
       DB::table('users')->insert([
         ["name" => $admin_name, "email" => $admin_email, "password" => bcrypt($admin_password)],
+        ["name" => 'Test Reviewer 1', "email" => 'test-reviewer1@heramb.net', "password" => bcrypt($admin_password)],
+        ["name" => 'Test Reviewer 2', "email" => 'test-reviewer2@heramb.net', "password" => bcrypt($admin_password)],
+        ["name" => 'Test Reviewer 3', "email" => 'test-reviewer3@heramb.net', "password" => bcrypt($admin_password)],
+        ["name" => 'Test Reviewer 4', "email" => 'test-reviewer4@heramb.net', "password" => bcrypt($admin_password)],
       ]);
 
       echo "Admin user seeded with the following password: ".$admin_password;
