@@ -120,9 +120,6 @@
           }
         }
       },
-      props: {
-        user_id: ''
-      },
       mounted() {
         this.fetchFundraisers();
       },
