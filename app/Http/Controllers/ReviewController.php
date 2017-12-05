@@ -14,7 +14,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::all();
+        return response()->json([
+          'reviews' => $reviews,
+        ], 200);
     }
 
     /**
@@ -35,7 +38,24 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'rating' => 'required|integer|max:5',
+          'review' => 'nullable|string',
+          'fundraiser_id' => 'required|integer',
+          'user_id' => 'required|integer'
+        ]);
+
+        $review = Review::create([
+          'rating' => request('rating'),
+          'review' => request('review'),
+          'fundraiser_id' => request('fundraiser_id'),
+          'user_id' => Auth::user()->id
+        ]);
+
+        return response()->json([
+          'review' => $review,
+          'message' => 'Success'
+        ], 200);
     }
 
     /**
