@@ -53,48 +53,6 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="add-review-model">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title">Add New Review</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="alert alert-danger" v-if="review_errors.length > 0">
-                            <ul>
-                                <li v-for="error in review_errors">{{ error }}</li>
-                            </ul>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="rating">Rating:</label>
-                            <select id="rating" class="form-control" v-model="review.rating">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="review">Review:</label>
-                            <textarea id="review" class="form-control" v-model="review.review"></textarea>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button @click="createReview" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
     </div>
 </template>
 
@@ -109,15 +67,7 @@
             rating_count: '',
           },
           errors: [],
-          fundraisers: [],
-          reviews: [],
-          review: {
-            id: '',
-            rating: '',
-            review: '',
-            user_id: '',
-            fundraiser_id: '',
-          }
+          fundraisers: []
         }
       },
       mounted() {
